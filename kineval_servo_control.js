@@ -23,48 +23,12 @@ kineval.setpointDanceSequence = function execute_setpoints() {
 
     // if update not requested, exit routine
     if (!kineval.params.update_pd_dance) return; 
-    // console.log('Set dance funtion called')
-    // // STENCIL: implement FSM to cycle through dance pose setpoints
-    // // Make Pose for kinval.params.pose
-    // var q_robot_config = [
-    //     robot.origin.xyz[0],
-    //     robot.origin.xyz[1],
-    //     robot.origin.xyz[2],
-    //     robot.origin.rpy[0],
-    //     robot.origin.rpy[1],
-    //     robot.origin.rpy[2]
-    // ];
-    // for (x in robot.joints) {
-    //     if (kineval.params.pose[x] == undefined){
-    //         q_robot_config = q_robot_config.concat(0)
-    //     } else{
-    //         q_robot_config = q_robot_config.concat(kineval.params.pose[x]);
-    //     }
-    //     // q_names[x] = q_robot_config.length;
-    //     // q_robot_config = q_robot_config.concat(robot.joints[x].angle);
-    // }
-    // console.log(q_robot_config.length)
-    // console.log(q_robot_config)
-    // console.log(kineval.params.pose)
-
-    // // check if the pose is in collition
-    // if (kineval.poseIsCollision(q_robot_config) == false){
-    //     console.log("All good")
-    //     for (x in robot.joints){
-    //         if (kineval.params.pose[x]== undefined){
-    //             kineval.params.setpoint_target[x] = 0
-    //         } else{
-    //             kineval.params.setpoint_target[x] = kineval.params.pose[x]
-    //         }
-    //     }
-    // }else{
-    //     console.log('Pose is in Collision')
-    // }
-
+    
     for (x in robot.joints){
         if (kineval.params.pose[x]== undefined){
             kineval.params.setpoint_target[x] = 0
         } else{
+            // angles received from pose.py are present in kineval.params.pose
             kineval.params.setpoint_target[x] = kineval.params.pose[x]
         }
     }
